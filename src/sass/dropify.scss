@@ -56,7 +56,7 @@ $dropify-font-path:        "../fonts" !default;
     }
 
     &.has-preview {
-        .dropify-clear {
+        .dropify-clear, .dropify-upload {
             display: block;
         }
     }
@@ -133,7 +133,7 @@ $dropify-font-path:        "../fonts" !default;
         }
     }
 
-    .dropify-clear {
+    .dropify-clear,.dropify-upload {
         display: none;
         position: absolute;
         opacity: 0;
@@ -150,9 +150,13 @@ $dropify-font-path:        "../fonts" !default;
         color: $dropify-clear-color;
         transition: all 0.15s linear;
 
+
         &:hover {
             background: transparentize($dropify-clear-color, 0.8);
         }
+    }
+    .dropify-upload{
+        right: 40px;
     }
 
     .dropify-preview {
@@ -274,7 +278,7 @@ $dropify-font-path:        "../fonts" !default;
     }
 
     &:hover {
-        .dropify-clear {
+        .dropify-clear,.dropify-upload {
             opacity: 1;
         }
 
@@ -371,7 +375,7 @@ $dropify-font-path:        "../fonts" !default;
             padding: 40px 0;
         }
 
-        .dropify-clear {
+        .dropify-clear,.dropify-upload {
             top: auto;
             bottom: 23px;
             opacity: 1;

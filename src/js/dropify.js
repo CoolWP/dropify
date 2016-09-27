@@ -49,8 +49,12 @@ function Dropify(element, options) {
             preview:         '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">{{ replace }}</p></div></div></div>',
             filename:        '<p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>',
             clearButton:     '<button type="button" class="dropify-clear">{{ remove }}</button>',
+            uploadButton:    '<button type="button" class="dropify-upload">{{ upload }}</button>',
             errorLine:       '<p class="dropify-error">{{ error }}</p>',
             errorsContainer: '<div class="dropify-errors-container"><ul></ul></div>'
+        },
+        callbacks:{
+              uploadCallback:''
         }
     };
 
@@ -135,6 +139,11 @@ Dropify.prototype.createElements = function()
         this.clearButton = $(this.settings.tpl.clearButton);
         this.clearButton.insertAfter(this.input);
         this.clearButton.on('click', this.clearElement);
+        this.uploadButton = $(this.settings.tpl.uploadButton);
+        this.uploadButton.insertAfter(this.input);
+        if(typeof this.settings.callbacks.uploadCallback==='function'){
+            this.uploadButton.on('click', this.settings.callbacks.uploadCallback);
+        }
     }
 
     this.filenameWrapper = $(this.settings.tpl.filename);
